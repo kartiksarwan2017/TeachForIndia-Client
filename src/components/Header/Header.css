@@ -1,0 +1,62 @@
+navbar{
+    display: flex;
+    position: absolute;
+}
+
+#nav-img {
+    display: inline-block;
+}
+
+#nav-img img{
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+}
+
+#nav-title h1{
+    display: inline-block;
+    position: relative;
+    top: 50px;
+    letter-spacing: 1px;
+}
+
+.nav-links{
+    display: inline-block;
+    position: relative;
+    left: 400px;
+}
+
+
+ /* Basic CSS for the dropdown */
+ .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-select {
+    padding: 8px 16px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+
+  .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    z-index: 1;
+  }
+
+  .dropdown-options a {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #333;
+  }
+
+  .dropdown-options a:hover {
+    background-color: #ddd;
+  }
