@@ -29,18 +29,18 @@ const AdminLogin = () => {
 		    });
 
       setTimeout(() => {
-        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("adminToken", response.data.token);
 			   window.location = "/home";	
 			}, 0);
 
-    }catch(err){
+    }catch(error){
       if (
-				err.response &&
-				err.response.status >= 400 &&
-				err.response.status <= 500
+				error.response &&
+				error.response.status >= 400 &&
+				error.response.status <= 500
 			) {
 				Swal.fire({
-					title: `<strong>${err.response.data.message}</strong>`,
+					title: `<strong>${error.response.data.message}</strong>`,
 					icon: 'error',
 					showCloseButton: true
 				});

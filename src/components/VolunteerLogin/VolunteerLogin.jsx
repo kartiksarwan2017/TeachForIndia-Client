@@ -1,8 +1,60 @@
 import "./VolunteerLogin.css";
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import Swal from 'sweetalert2';
 
 const VolunteerLogin = () => {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleVolunteerSubmit = async (e) => {
+    e.preventDefault();
+
+    const volunteerDetails = {
+      "email": email,
+      "password": password
+    }
+
+    try{
+
+      const url = "http://localhost:8000/volunteer/login";
+			const response = await axios.post(url, volunteerDetails);
+
+      console.log(response);
+      
+			Swal.fire({
+				title: `Logged in Sucessfully`,
+				icon: 'success',
+				showCloseButton: true
+		    });
+
+      setTimeout(() => {
+        localStorage.setItem("volunteerToken", response.data.token);
+			   window.location = "/home";	
+			}, 0);
+
+    }catch(error){
+      if (
+				error.response &&
+				error.response.status >= 400 &&
+				error.response.status <= 500
+			) {
+				Swal.fire({
+					title: `<strong>${error.response.data.message}</strong>`,
+					icon: 'error',
+					showCloseButton: true
+				});
+
+        console.log(error.response.data.message);
+
+			}
+    }
+
+  }
+
+
   return (
     <>
       <div className="container">
@@ -30,13 +82,15 @@ const VolunteerLogin = () => {
           <div className="form-content">
             <div className="login-form">
               <div className="title">Login</div>
-              <form action="#">
+              <form onSubmit={(e) => handleVolunteerSubmit(e)}>
                 <div className="input-boxes">
                   <div className="input-box">
                     <i className="fas fa-envelope"></i>
                     <input
                       type="text"
                       placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       required
                     />
                   </div>
@@ -45,6 +99,8 @@ const VolunteerLogin = () => {
                     <input
                       type="password"
                       placeholder="Enter your password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                       required
                     />
                   </div>

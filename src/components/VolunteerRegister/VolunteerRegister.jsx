@@ -1,6 +1,8 @@
 import "./VolunteerRegister.css";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import Swal from 'sweetalert2';
 
 const VolunteerRegister = () => {
   const [name, setName] = useState("");
@@ -33,25 +35,68 @@ const VolunteerRegister = () => {
     }
   };
 
-  const handleRegisterSubmit = (e) => {
 
-      e.preventDefault();
+  const handleLanguageChange = (e) => {
 
-      // Split the input value by commas, spaces, or newlines to create an array
-      const newArray = languages
-      .split(/,|\s|\n/)
-      .filter((item) => item.trim() !== "");
-    setlanguagesSpoken(newArray);
+      setLanguages(e.target.value);
+       // Split the input value by commas, spaces, or newlines to create an array
+       const newArray = languages
+       .split(/,|\s|\n/)
+       .filter((item) => item.trim() !== "");
+       setlanguagesSpoken(newArray);
 
-    console.log(name);
-    console.log(email);
-    console.log(password);
-    console.log(confirm_password);
-    console.log(contact);
-    console.log(location);
-    console.log(languages);
-    console.log(availability);
-    console.log(languagesSpoken);
+  }
+
+  const handleRegisterSubmit = async (e) => {
+
+    e.preventDefault();
+
+    const volunteerDetails = {
+      "name": name,
+      "email": email,
+      "password": password,
+      "confirm_password": confirm_password,
+      "contact": contact,
+      "location": location,
+      "languagesSpoken": languagesSpoken,
+      "availability": availability
+
+    }
+    
+    try{
+
+      const url = "http://localhost:8000/volunteer/register";
+			const response = await axios.post(url, volunteerDetails);
+
+      console.log(response);
+      
+			Swal.fire({
+				title: `<strong>${response.data.message}</strong>`,
+				icon: 'success',
+				showCloseButton: true
+		    });
+
+      // setTimeout(() => {
+      //   localStorage.setItem("token", response.data.token);
+			//    window.location = "/home";	
+			// }, 0);
+
+    }catch(error){
+      if (
+				error.response &&
+				error.response.status >= 400 &&
+				error.response.status <= 500
+			) {
+				Swal.fire({
+					title: `<strong>${error.response.data.message}</strong>`,
+					icon: 'error',
+					showCloseButton: true
+				});
+
+        console.log(error.response);
+			}
+    }
+
   }
 
   return (
@@ -153,7 +198,7 @@ const VolunteerRegister = () => {
                     <h5>Enter Languages</h5>
                     <textarea
                       value={languages}
-                      onChange={(e) => setLanguages(e.target.value)}
+                      onChange={(e) => handleLanguageChange(e)}
                       placeholder="Enter multiple langauges separated by commas, spaces, or newlines"
                       rows="5"
                       cols="40"
