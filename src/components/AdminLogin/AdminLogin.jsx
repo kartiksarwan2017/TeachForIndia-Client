@@ -1,7 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from "react-router-dom";
 
 const AdminLogin = () => {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    const adminDetails = {
+      "email": email,
+      "password": password
+    }
+
+    console.log(adminDetails);
+    
+  }
+
   return (
     <>
     <div className="container">
@@ -29,13 +45,15 @@ const AdminLogin = () => {
           <div className="form-content">
             <div className="login-form">
               <div className="title">Login</div>
-              <form action="#">
+              <form onSubmit={(e) => handleSubmit(e)}>
                 <div className="input-boxes">
                   <div className="input-box">
                     <i className="fas fa-envelope"></i>
                     <input
                       type="text"
                       placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       required
                     />
                   </div>
@@ -44,6 +62,8 @@ const AdminLogin = () => {
                     <input
                       type="password"
                       placeholder="Enter your password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                       required
                     />
                   </div>

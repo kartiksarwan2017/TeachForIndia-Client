@@ -12,10 +12,14 @@ const Admin = () => {
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
 
-    console.log(username);
-    console.log(email);
-    console.log(password);
-    console.log(confirm_password);
+    const adminDetails = {
+      "username": username,
+      "email": email,
+      "password": password,
+      "confirm_password": confirm_password
+    }
+
+    console.log(adminDetails);
   }
 
   return (
