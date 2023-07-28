@@ -92,10 +92,11 @@ const Admin = () => {
                     />
                   </div>
                   <div className="button input-box">
-                    <button>Sign Up</button>
+                    <button className="signUpBtn">Sign Up</button>
                   </div>
-                  <div className="text sign-up-text">
-                    Already have an account? <label for="flip">
+                  <div className="text sign-up-text" style={{fontSize: 18, position: "relative", right: 10}}>
+                    <span>Already have an account?</span> {" "}
+                    <label for="flip">
                       <Link to="/admin-login">Login</Link>
                     </label>
                   </div>
