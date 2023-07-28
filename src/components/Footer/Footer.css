@@ -1,6 +1,9 @@
-.container .row{
+.footercontainer .row{
   position: relative;
-  bottom: 100px;
+  top: 180px;
+  left: 30px;
+
+  
 }
 
 .new_footer_area {
