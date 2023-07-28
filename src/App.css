@@ -11,7 +11,8 @@
 
 .container{
   position: relative;
-  top: 300px;
+  top: 30px;
+  margin: 40px;
   max-width: 850px;
   width: 100%;
   background: #fff;

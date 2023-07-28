@@ -56,7 +56,7 @@ const VolunteerRegister = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container sign-up-container">
         <input type="checkbox" id="flip" />
         <div className="cover">
           <div className="front">
@@ -150,7 +150,7 @@ const VolunteerRegister = () => {
                   </div>
 
                   <div>
-                    Enterlanguages
+                    <h5>Enter Languages</h5>
                     <textarea
                       value={languages}
                       onChange={(e) => setLanguages(e.target.value)}
@@ -161,28 +161,30 @@ const VolunteerRegister = () => {
                 
                   </div>
 
-                  <div>
-                    <h2>Availability Input</h2>
+                  <div className="availibility-input">
+                    <h5>Availability Input</h5>
                     {daysOfWeek.map((day) => (
-                      <div key={day}>
+                      <div key={day} className="checkbox-container">
                         <label>
                           <input
                             type="checkbox"
                             value={day}
                             checked={availability.includes(day)}
                             onChange={handleCheckboxChange}
+                            style={{marginLeft: 40}}
                           />
-                          {day}
+                         <span style={{marginLeft: 20, fontSize:18}}>{day}</span>
                         </label>
                       </div>
                     ))}
                   </div>
 
                   <div className="button input-box">
-                    <button>Sign Up</button>
+                    <button className="signUpBtn">Sign Up</button>
                   </div>
-                  <div className="text sign-up-text">
-                    Already have an account? <label for="flip">
+                  <div className="text sign-up-text" style={{fontSize: 18, position: "relative", right: 40}}>
+                    <span>Already have an account? </span>
+                    <label for="flip">
                       <Link to="/volunteer-login">Login</Link>
                     </label>
                   </div>

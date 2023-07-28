@@ -48,14 +48,11 @@ const VolunteerLogin = () => {
                       required
                     />
                   </div>
-                  <div className="text">
-                    <a href="#">Forgot password?</a>
-                  </div>
                   <div className="button input-box">
-                    <input type="submit" value="Sumbit" />
+                    <button className="signInBtn">Sign In</button>
                   </div>
-                  <div className="text sign-up-text">
-                    Don't have an account?{" "}
+                  <div className="text sign-up-text" style={{fontSize: 18, position: "relative", right: 8}}>
+                    <span>Don't have an account?</span>{" "}
                     <label for="flip">
                       <Link to="/volunteer-register">Sign Up</Link>
                     </label>
