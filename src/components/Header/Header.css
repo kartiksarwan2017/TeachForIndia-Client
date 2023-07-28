@@ -1,3 +1,7 @@
+.header-container{
+  height: 150px;
+}
+
 navbar{
     display: flex;
     position: absolute;
@@ -23,7 +27,19 @@ navbar{
 .nav-links{
     display: inline-block;
     position: relative;
-    left: 400px;
+    left: 700px;
+    top: 40px;
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+}
+
+.nav-links .home-btn{
+  width: 90px;
+  height: 44px;
+  font-size: 16px;
+  border: 1px solid lightgray;
+  outline: none;
 }
 
 

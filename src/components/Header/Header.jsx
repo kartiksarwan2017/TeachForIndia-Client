@@ -39,10 +39,6 @@ const Header = () => {
    });
   }
 
-
-
-
- 
   return (
     <>
       <div className="header-container">
@@ -56,18 +52,22 @@ const Header = () => {
         </navbar>
 
         <div className="nav-links">
-          <Link to="/Home">Home</Link>
-          <div class="dropdown">
-            <div class="dropdown-select" onClick={(event) => handleAdminSelection(event)}>Admin</div>
-            <div class="dropdown-options">
+         
+            <Link to="/Home">
+              <button className="home-btn">Home</button>
+            </Link>
+        
+          <div className="dropdown">
+            <div className="dropdown-select" onClick={(event) => handleAdminSelection(event)}>Admin</div>
+            <div className="dropdown-options">
               <Link to="/admin-login">Login</Link>
               <Link to="/admin-register">Register</Link>
             </div>
           </div>
 
-          <div class="dropdown">
-            <div class="dropdown-select" onClick={(event) => handleVolunteerSelection(event)}>Volunteer</div>
-            <div class="dropdown-options">
+          <div className="dropdown">
+            <div className="dropdown-select" onClick={(event) => handleVolunteerSelection(event)}>Volunteer</div>
+            <div className="dropdown-options">
               <Link to="/volunteer-login">Login</Link>
               <Link to="/volunteer-register">Register</Link>
             </div>
