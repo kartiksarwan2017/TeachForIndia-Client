@@ -1,20 +1,25 @@
-import "./Volunteer.css";
-import React, {useState} from "react";
+import "./VolunteerRegister.css";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-const Volunteer = () => {
-
-
+const VolunteerRegister = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm_password, setConfirmPassword] = useState("");
   const [contact, setContact] = useState("");
   const [location, setLocation] = useState("");
-
   const [languagesSpoken, setlanguagesSpoken] = useState([]);
   const [languages, setLanguages] = useState("");
 
-  const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const daysOfWeek = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
   const [availability, setAvailability] = useState([]);
 
   const handleCheckboxChange = (event) => {
@@ -22,23 +27,32 @@ const Volunteer = () => {
     if (checked) {
       setAvailability((prevAvailability) => [...prevAvailability, value]);
     } else {
-      setAvailability((prevAvailability) => prevAvailability.filter((day) => day !== value));
+      setAvailability((prevAvailability) =>
+        prevAvailability.filter((day) => day !== value)
+      );
     }
   };
 
-  const handleInputChange = (event) => {
-    setLanguages(event.target.value);
-  };
+  const handleRegisterSubmit = (e) => {
 
+      e.preventDefault();
 
-  const convertToArray = () => {
-    // Split the input value by commas, spaces, or newlines to create an array
-    const newArray = languages.split(/,|\s|\n/).filter((item) => item.trim() !== '');
+      // Split the input value by commas, spaces, or newlines to create an array
+      const newArray = languages
+      .split(/,|\s|\n/)
+      .filter((item) => item.trim() !== "");
     setlanguagesSpoken(newArray);
-  };
 
-  console.log(languagesSpoken);
-
+    console.log(name);
+    console.log(email);
+    console.log(password);
+    console.log(confirm_password);
+    console.log(contact);
+    console.log(location);
+    console.log(languages);
+    console.log(availability);
+    console.log(languagesSpoken);
+  }
 
   return (
     <>
@@ -65,51 +79,27 @@ const Volunteer = () => {
         </div>
         <div className="forms">
           <div className="form-content">
-            <div className="login-form">
-              <div className="title">Login</div>
-              <form action="#">
-                <div className="input-boxes">
-                  <div className="input-box">
-                    <i className="fas fa-envelope"></i>
-                    <input
-                      type="text"
-                      placeholder="Enter your email"
-                      required
-                    />
-                  </div>
-                  <div className="input-box">
-                    <i className="fas fa-lock"></i>
-                    <input
-                      type="password"
-                      placeholder="Enter your password"
-                      required
-                    />
-                  </div>
-                  <div className="text">
-                    <a href="#">Forgot password?</a>
-                  </div>
-                  <div className="button input-box">
-                    <input type="submit" value="Sumbit" />
-                  </div>
-                  <div className="text sign-up-text">
-                    Don't have an account? <label for="flip">Sigup now</label>
-                  </div>
-                </div>
-              </form>
-            </div>
+        
             <div className="signup-form">
               <div className="title">Signup</div>
-              <form action="#">
+              <form onSubmit={(e) => handleRegisterSubmit(e)} >
                 <div className="input-boxes">
                   <div className="input-box">
                     <i className="fas fa-user"></i>
-                    <input type="text" placeholder="Enter your name" required />
+                    <input 
+                      type="text" 
+                      placeholder="Enter your name" 
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required />
                   </div>
                   <div className="input-box">
                     <i className="fas fa-envelope"></i>
                     <input
                       type="text"
                       placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       required
                     />
                   </div>
@@ -118,6 +108,8 @@ const Volunteer = () => {
                     <input
                       type="password"
                       placeholder="Enter your password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                       required
                     />
                   </div>
@@ -126,6 +118,8 @@ const Volunteer = () => {
                     <input
                       type="password"
                       placeholder="Confirm Your Password"
+                      value={confirm_password}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
                       required
                     />
                   </div>
@@ -137,6 +131,8 @@ const Volunteer = () => {
                       name="mobile"
                       placeholder="Enter your mobile number"
                       pattern="[0-9]{10}"
+                      value={contact}
+                      onChange={(e) => setContact(e.target.value)}
                       required
                     />
                   </div>
@@ -147,49 +143,48 @@ const Volunteer = () => {
                       id="location"
                       name="location"
                       placeholder="e.g., City, Country"
+                      value={location}
+                      onChange={(e) => setLocation(e.target.value)}
                       required
                     />
                   </div>
 
-             
-<div>
-  Enterlanguages 
-<textarea
-        value={languages}
-        onChange={handleInputChange}
-        placeholder="Enter multiple langauges separated by commas, spaces, or newlines"
-        rows="5"
-        cols="40"
- />
+                  <div>
+                    Enterlanguages
+                    <textarea
+                      value={languages}
+                      onChange={(e) => setLanguages(e.target.value)}
+                      placeholder="Enter multiple langauges separated by commas, spaces, or newlines"
+                      rows="5"
+                      cols="40"
+                    />
+                
+                  </div>
 
-<button onClick={convertToArray}>Select Language</button>
-</div>
-
-<div>
-      <h2>Availability Input</h2>
-      {daysOfWeek.map((day) => (
-        <div key={day}>
-          <label>
-            <input
-              type="checkbox"
-              value={day}
-              checked={availability.includes(day)}
-              onChange={handleCheckboxChange}
-            />
-            {day}
-          </label>
-        </div>
-      ))}
-    </div>
-
-
-
+                  <div>
+                    <h2>Availability Input</h2>
+                    {daysOfWeek.map((day) => (
+                      <div key={day}>
+                        <label>
+                          <input
+                            type="checkbox"
+                            value={day}
+                            checked={availability.includes(day)}
+                            onChange={handleCheckboxChange}
+                          />
+                          {day}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
 
                   <div className="button input-box">
-                    <input type="submit" value="Sumbit" />
+                    <button>Sign Up</button>
                   </div>
                   <div className="text sign-up-text">
-                    Already have an account? <label for="flip">Login now</label>
+                    Already have an account? <label for="flip">
+                      <Link to="/volunteer-login">Login</Link>
+                    </label>
                   </div>
                 </div>
               </form>
@@ -201,4 +196,4 @@ const Volunteer = () => {
   );
 };
 
-export default Volunteer;
+export default VolunteerRegister;

@@ -3,6 +3,45 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+
+
+  const handleAdminSelection = (event) => {
+      // JavaScript to handle dropdown behavior for the first dropdown
+      const dropdownSelect1 = document.querySelector('.dropdown:nth-of-type(1) .dropdown-select');
+      const dropdownOptions1 = document.querySelector('.dropdown:nth-of-type(1) .dropdown-options');
+
+      dropdownSelect1.addEventListener('click', () => {
+        dropdownOptions1.style.display = dropdownOptions1.style.display === 'block' ? 'none' : 'block';
+      });
+
+      // Hide the first dropdown if the user clicks outside of it
+      document.addEventListener('click', (event) => {
+        if (!dropdownSelect1.contains(event.target)) {
+          dropdownOptions1.style.display = 'none';
+        }
+      });
+  }
+
+  const handleVolunteerSelection = (event) => {
+       // JavaScript to handle dropdown behavior for the second dropdown
+   const dropdownSelect2 = document.querySelector('.dropdown:nth-of-type(2) .dropdown-select');
+   const dropdownOptions2 = document.querySelector('.dropdown:nth-of-type(2) .dropdown-options');
+
+   dropdownSelect2.addEventListener('click', () => {
+     dropdownOptions2.style.display = dropdownOptions2.style.display === 'block' ? 'none' : 'block';
+   });
+
+   // Hide the second dropdown if the user clicks outside of it
+   document.addEventListener('click', (event) => {
+     if (!dropdownSelect2.contains(event.target)) {
+       dropdownOptions2.style.display = 'none';
+     }
+   });
+  }
+
+
+
+
  
   return (
     <>
@@ -18,12 +57,22 @@ const Header = () => {
 
         <div className="nav-links">
           <Link to="/Home">Home</Link>
-          <Link to="/admin">
-            <button>Admin</button>
-          </Link>
-          <Link to="/volunteer">
-            <button>Volunteer</button>
-          </Link>
+          <div class="dropdown">
+            <div class="dropdown-select" onClick={(event) => handleAdminSelection(event)}>Admin</div>
+            <div class="dropdown-options">
+              <Link to="/admin">Page 1</Link>
+              <a href="page2.html">Page 2</a>
+              <a href="page3.html">Page 3</a>
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <div class="dropdown-select" onClick={(event) => handleVolunteerSelection(event)}>Volunteer</div>
+            <div class="dropdown-options">
+              <Link to="/volunteer-login">Login</Link>
+              <Link to="/volunteer-register">Register</Link>
+            </div>
+          </div>
         </div>
       </div>
     </>
