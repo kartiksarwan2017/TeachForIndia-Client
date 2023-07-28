@@ -1,11 +1,10 @@
-import "./VolunteerLogin.css";
-import React from "react";
+import React from 'react';
 import { Link } from "react-router-dom";
 
-const VolunteerLogin = () => {
+const AdminLogin = () => {
   return (
     <>
-      <div className="container">
+    <div className="container">
         <input type="checkbox" id="flip" />
         <div className="cover">
           <div className="front">
@@ -57,7 +56,7 @@ const VolunteerLogin = () => {
                   <div className="text sign-up-text">
                     Don't have an account?{" "}
                     <label for="flip">
-                      <Link to="/volunteer-register">Sign Up</Link>
+                      <Link to="/admin-register">Sign Up</Link>
                     </label>
                   </div>
                 </div>
@@ -67,7 +66,7 @@ const VolunteerLogin = () => {
         </div>{" "}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default VolunteerLogin;
+export default AdminLogin;

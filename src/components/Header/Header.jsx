@@ -60,9 +60,8 @@ const Header = () => {
           <div class="dropdown">
             <div class="dropdown-select" onClick={(event) => handleAdminSelection(event)}>Admin</div>
             <div class="dropdown-options">
-              <Link to="/admin">Page 1</Link>
-              <a href="page2.html">Page 2</a>
-              <a href="page3.html">Page 3</a>
+              <Link to="/admin-login">Login</Link>
+              <Link to="/admin-register">Register</Link>
             </div>
           </div>
 
