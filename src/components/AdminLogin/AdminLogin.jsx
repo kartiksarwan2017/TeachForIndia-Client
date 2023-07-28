@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import { Link } from "react-router-dom";
+import axios from "axios";
+import Swal from 'sweetalert2';
 import "./AdminLogin.css";
 
 const AdminLogin = () => {
@@ -7,7 +9,7 @@ const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     const adminDetails = {
@@ -15,8 +17,38 @@ const AdminLogin = () => {
       "password": password
     }
 
-    console.log(adminDetails);
-    
+    try {
+
+      const url = "http://localhost:8000/admin/login";
+			const response = await axios.post(url, adminDetails);
+      
+			Swal.fire({
+				title: `Logged in Sucessfully`,
+				icon: 'success',
+				showCloseButton: true
+		    });
+
+      setTimeout(() => {
+        localStorage.setItem("token", response.data.token);
+			   window.location = "/home";	
+			}, 0);
+
+    }catch(err){
+      if (
+				err.response &&
+				err.response.status >= 400 &&
+				err.response.status <= 500
+			) {
+				Swal.fire({
+					title: `<strong>${err.response.data.error}</strong>`,
+					icon: 'error',
+					showCloseButton: true
+				});
+
+			}
+    }
+
+ 
   }
 
   return (
