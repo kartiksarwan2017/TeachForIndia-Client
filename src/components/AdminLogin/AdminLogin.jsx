@@ -40,7 +40,7 @@ const AdminLogin = () => {
 				err.response.status <= 500
 			) {
 				Swal.fire({
-					title: `<strong>${err.response.data.error}</strong>`,
+					title: `<strong>${err.response.data.message}</strong>`,
 					icon: 'error',
 					showCloseButton: true
 				});
