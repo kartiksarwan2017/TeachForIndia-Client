@@ -1,6 +1,8 @@
 import "./AdminRegister.css";
 import React, {useState} from 'react';
-import {Link} from "react-router-dom";
+import axios from "axios";
+import Swal from 'sweetalert2';
+import { Link, useNavigate } from "react-router-dom";
 
 const Admin = () => {
 
@@ -9,7 +11,9 @@ const Admin = () => {
   const [password, setPassword] = useState("");
   const [confirm_password, setConfirmPassword] = useState("");
 
-  const handleRegisterSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const handleRegisterSubmit = async (e) => {
     e.preventDefault();
 
     const adminDetails = {
@@ -19,7 +23,40 @@ const Admin = () => {
       "confirm_password": confirm_password
     }
 
-    console.log(adminDetails);
+    try {
+
+      const url = "http://localhost:8000/admin/register";
+			const response = await axios.post(url, adminDetails);
+
+			setTimeout(() => {
+        window.location = "/admin-login";	
+			}, 0);
+
+      Swal.fire({
+				title: `Admin Created Sucessfully!`,
+				icon: 'success',
+				showCloseButton: true,
+        timer: 1000
+		  });
+
+    }catch(error){
+      if (
+				error.response &&
+				error.response.status >= 400 &&
+				error.response.status <= 500
+			) {
+				
+				Swal.fire({
+					title: `<strong>${error.response.data.message}</strong>`,
+					icon: 'error',
+					showCloseButton: true
+				});
+
+			}
+    }
+
+
+
   }
 
   return (
