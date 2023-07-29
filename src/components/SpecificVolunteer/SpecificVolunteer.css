@@ -15,7 +15,7 @@
     height: 550px;
 }
 
-.yoga-pose-info {
+.volunteer-info {
     font-size: 18px;
     font-weight: 500;
     display: flex;
@@ -25,11 +25,8 @@
     left: 120px; 
 }
 
-.yogadetails {
-    position: absolute;
-}
 
-.yoga-pose-category{
+.volunteer-category{
     position: absolute;
     left: 270px;  
 }

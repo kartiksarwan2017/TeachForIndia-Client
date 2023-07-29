@@ -30,7 +30,7 @@ const VolunteersList = () => {
                 {volunteers.map((volunteer, index) => {
                 return(
                   <Col id={volunteer._id} key = {index} xs={6} md={4} lg={3} style={{marginBottom: "2%"}}>
-                      <Card className="card-container"onClick={() => window.location.href="/specific-volunteer-details/" + volunteer._id} style={{height: 450}}>
+                      <Card onClick={() => window.location.href="/specific-volunteer-details/" + volunteer._id} style={{height: 450}}>
                       <Card.Img variant="top" src="https://static.vecteezy.com/system/resources/previews/005/112/925/original/cartoon-boy-student-stands-and-reading-a-book-free-vector.jpg" style={{width: "100%", height: 300}}/>
                       <Card.Body>
                           <Card.Title style={{margin: "10 0"}}>{volunteer.name}</Card.Title>

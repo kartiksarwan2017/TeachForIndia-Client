@@ -9,7 +9,7 @@ const AdminDashboard = () => {
 
         <div className='admin-main-section'>
             <button>
-                <Link to="/list-of-all-vounteers">Vounteers List</Link>
+                <Link to="/admin/list-of-all-vounteers">Vounteers List</Link>
             </button>
         </div>
     </div>

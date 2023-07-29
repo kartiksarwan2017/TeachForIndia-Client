@@ -20,9 +20,8 @@ const SpecificVolunteer = () => {
               `http://localhost:8000/admin/specific-volunteer-details/${volunteerID}`
             );
     
-            console.log([response.data.volunteer]);
-
             setSpecificVolunteer([response.data.volunteer]);
+
           } catch (error) {
             console.error(error);
           }
@@ -31,8 +30,6 @@ const SpecificVolunteer = () => {
         getSpecificVolunteerDetails();
       }, [volunteerID]);
     
-      console.log(specificVolunteer);
-
 
   return (
     <div className="specific-vounteer-details-container">
@@ -54,21 +51,21 @@ const SpecificVolunteer = () => {
         
                <Card.Body className="card-details">
                     <Card.Title>{volunteer.name}</Card.Title>
-                    <Card.Text className="yoga-pose-info">
-                        <span className="yoga-details">Email</span>
-                        <span className="yoga-pose-category">{volunteer.email}</span>
+                    <Card.Text className="volunteer-info">
+                        <span className="volunteer-details">Email</span>
+                        <span className="volunteer-category">{volunteer.email}</span>
                     </Card.Text>
-                    <Card.Text className="yoga-pose-info">
-                        <span className="yoga-details">Contact</span>
-                        <span className="yoga-pose-category">{volunteer.contact}</span>
+                    <Card.Text className="volunteer-info">
+                        <span className="volunteer-details">Contact</span>
+                        <span className="volunteer-category">{volunteer.contact}</span>
                     </Card.Text>
-                    <Card.Text className="yoga-pose-info">
-                        <span className="yoga-details">Location</span>
-                        <span className="yoga-pose-category">{volunteer.location}</span>
+                    <Card.Text className="volunteer-info">
+                        <span className="volunteer-details">Location</span>
+                        <span className="volunteer-category">{volunteer.location}</span>
                     </Card.Text>
-                    <Card.Text className="yoga-pose-info"  style={{ position: "relative", bottom: "20px"}}>
-                        <span className="yoga-details">Languages Spoken</span>
-                        <span className="yoga-pose-category">
+                    <Card.Text className="volunteer-info"  style={{ position: "relative", bottom: "20px"}}>
+                        <span className="volunteer-details">Languages Spoken</span>
+                        <span className="volunteer-category">
                             {volunteer.languagesSpoken.map((item, index) => {
                             return (
                                 <span style={{display: "flex"}}>
@@ -78,9 +75,9 @@ const SpecificVolunteer = () => {
                         })}
                         </span>
                     </Card.Text>
-                    <Card.Text className="yoga-pose-info" style={{ position: "relative", top: "20px"}}>
-                        <span className="yoga-details">Availability</span>
-                        <span className="yoga-pose-category" >
+                    <Card.Text className="volunteer-info" style={{ position: "relative", top: "20px"}}>
+                        <span className="volunteer-details">Availability</span>
+                        <span className="volunteer-category" >
                             {volunteer.availability.map((item, index) => {
                             return (
                                 <>
