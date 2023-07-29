@@ -42,14 +42,14 @@ const Header = () => {
   return (
     <>
       <div className="header-container">
-        <navbar>
+        <section className="navbar">
           <div id="nav-img">
             <img src="https://www.educationworld.in/wp-content/uploads/2021/06/Untitled-design-46.jpg" alt="nav-img" id="nav-icon" />
           </div>
           <div id="nav-title">
             <h1>Teach For India</h1>
           </div>
-        </navbar>
+        </section>
 
         <div className="nav-links">
          

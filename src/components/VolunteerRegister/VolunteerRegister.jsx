@@ -76,10 +76,10 @@ const VolunteerRegister = () => {
 				showCloseButton: true
 		    });
 
-      // setTimeout(() => {
-      //   localStorage.setItem("token", response.data.token);
-			//    window.location = "/home";	
-			// }, 0);
+      setTimeout(() => {
+        localStorage.setItem("token", response.data.token);
+			   window.location = "/volunteer-login";	
+			}, 0);
 
     }catch(error){
       if (
