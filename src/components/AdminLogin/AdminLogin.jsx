@@ -30,7 +30,7 @@ const AdminLogin = () => {
 
       setTimeout(() => {
         localStorage.setItem("adminToken", response.data.token);
-			   window.location = "/home";	
+			   window.location = "/admin-dashboard";	
 			}, 0);
 
     }catch(error){
