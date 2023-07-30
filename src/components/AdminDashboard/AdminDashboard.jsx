@@ -1,6 +1,7 @@
 import React from 'react';
 import Carousal from '../Carousal/Carousal';
 import { Link } from 'react-router-dom';
+import "./AdminDashboard.css";
 
 const AdminDashboard = () => {
   return (

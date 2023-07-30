@@ -13,6 +13,7 @@ const VolunteerRegister = () => {
   const [location, setLocation] = useState("");
   const [languagesSpoken, setlanguagesSpoken] = useState([]);
   const [languages, setLanguages] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
 
   const daysOfWeek = [
     "Monday",
@@ -59,7 +60,8 @@ const VolunteerRegister = () => {
       "contact": contact,
       "location": location,
       "languagesSpoken": languagesSpoken,
-      "availability": availability
+      "availability": availability,
+      "imgUrl": imgUrl
 
     }
     
@@ -145,6 +147,16 @@ const VolunteerRegister = () => {
                       placeholder="Enter your email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="input-box">
+                    <i className="fas fa-envelope"></i>
+                    <input
+                      type="text"
+                      placeholder="Enter your ProfileImg URL"
+                      value={imgUrl}
+                      onChange={(e) => setImgUrl(e.target.value)}
                       required
                     />
                   </div>

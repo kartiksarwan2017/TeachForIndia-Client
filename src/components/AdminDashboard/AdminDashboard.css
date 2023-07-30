@@ -1,0 +1,26 @@
+.admin-dashboard-container{
+    margin: 100px 0;
+
+}
+
+.admin-main-section{
+  
+    margin: 100px 0;
+}
+
+.admin-main-section > button{
+    padding: 10px;
+    outline: none;
+    border: none;
+    background-color: rgb(142, 32, 245);
+    border-radius: 20px;
+    margin: 0 40px;
+}
+
+.admin-main-section a {
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+
+    
+}
