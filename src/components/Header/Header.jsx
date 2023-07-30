@@ -96,13 +96,13 @@ const Header = () => {
 
         <div className="nav-links">
           <Link to="/Home">
-            <button className="home-btn">Home</button>
+            <button className="home-btn" style={{fontSize: "20px"}}>Home</button>
           </Link>
 
           {localStorage.getItem("adminToken") === null && (
             <div className="dropdown">
               <div
-                className="dropdown-select"
+                className="dropdown-select admin-btn"
                 onClick={(event) => handleAdminSelection(event)}
               >
                 Admin
@@ -127,7 +127,7 @@ const Header = () => {
           {localStorage.getItem("volunteerToken") === null && (
             <div className="dropdown">
               <div
-                className="dropdown-select"
+                className="dropdown-select volunteer-btn"
                 onClick={(event) => handleVolunteerSelection(event)}
               >
                 Volunteer
