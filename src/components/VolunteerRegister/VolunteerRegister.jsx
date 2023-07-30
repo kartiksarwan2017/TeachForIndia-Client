@@ -67,7 +67,7 @@ const VolunteerRegister = () => {
     
     try{
 
-      const url = "http://localhost:8000/volunteer/register";
+      const url = "https://teach-for-india-server.onrender.com/volunteer/register";
 			const response = await axios.post(url, volunteerDetails);
 
       console.log(response);

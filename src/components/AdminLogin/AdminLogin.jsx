@@ -19,7 +19,7 @@ const AdminLogin = () => {
 
     try {
 
-      const url = "http://localhost:8000/admin/login";
+      const url = "https://teach-for-india-server.onrender.com/admin/login";
 			const response = await axios.post(url, adminDetails);
       
 			Swal.fire({

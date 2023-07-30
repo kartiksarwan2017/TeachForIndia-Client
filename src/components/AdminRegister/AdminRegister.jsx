@@ -25,7 +25,7 @@ const Admin = () => {
 
     try {
 
-      const url = "http://localhost:8000/admin/register";
+      const url = "https://teach-for-india-server.onrender.com/admin/register";
 			const response = await axios.post(url, adminDetails);
 
 			setTimeout(() => {

@@ -17,7 +17,7 @@ const SpecificVolunteer = () => {
         const getSpecificVolunteerDetails = async () => {
           try {
             const response = await axios.get(
-              `http://localhost:8000/admin/specific-volunteer-details/${volunteerID}`
+              `https://teach-for-india-server.onrender.com/admin/specific-volunteer-details/${volunteerID}`
             );
     
             setSpecificVolunteer([response.data.volunteer]);

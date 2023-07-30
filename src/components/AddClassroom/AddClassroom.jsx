@@ -52,7 +52,7 @@ const AddClassroom = () => {
         
         try{
 
-          const url = "http://localhost:8000/classroom/add-new-classroom";
+          const url = "https://teach-for-india-server.onrender.com/classroom/add-new-classroom";
           const response = await axios.post(url, classroomDetails);
     
           console.log(response);
