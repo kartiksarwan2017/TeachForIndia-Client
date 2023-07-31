@@ -12,7 +12,7 @@ const VolunteersList = () => {
     useEffect(() => {
 
         const getAllVounteers = async () => {
-            const response = await axios.get('http://localhost:8000/admin/volunteers-list');
+            const response = await axios.get('https://teach-for-india-server.onrender.com/admin/volunteers-list');
             setVolunteers(response.data.volunteers);
         }
         getAllVounteers();
